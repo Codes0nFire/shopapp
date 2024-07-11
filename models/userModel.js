@@ -9,7 +9,7 @@ const userSchema =mongoose.Schema({
     fullname:String,
     email:String,
     password:String,
-    isadmin:Boolean,
+    // isadmin:Boolean,
     contact:Number,
     picture: String,
     orders:{
