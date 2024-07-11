@@ -1,5 +1,5 @@
 const express= require("express");
-const {registerUser,loginUser}=require("../controllers/authController");
+const {registerUser,loginUser,logoutUser}=require("../controllers/authController");
 
 
 
@@ -15,6 +15,7 @@ const {registerUser,loginUser}=require("../controllers/authController");
 
 router.post("/create",registerUser);
 router.post("/login",loginUser);
+router.get("/logout",loginUser);
 
 
 
