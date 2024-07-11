@@ -1,12 +1,15 @@
 const mongoose = require("mongoose");
 
+const dbgr= require("debug")("development:mongoose");
+const config=require("config");
+
 mongoose
-.connect("mongodb://127.0.0.1:27017/shopapp")
+.connect(`${config.get("MONGODB_URI")}/shopapp`)
 .then(function (){
-    console.log("connected to database")
+    dbgr("connected to database")
 })
 .catch(function (err){
-    console.log("not connnected =>",err)
+    dbgr("not connnected =>",err)
 })
 
 
