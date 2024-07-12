@@ -1,5 +1,6 @@
  const express=require("express");
  const isLoggedin=require("../middlewares/isLoggedin")
+ const productModel=require("../models/productModel")
 
 
  const router= express.Router();
@@ -10,9 +11,11 @@
  })
 
 
- router.get("/shop",isLoggedin,function(req,res){
+ router.get("/shop",isLoggedin,async function(req,res){
 
-    res.render("shop");
+    let products= await productModel.find();
+
+    res.render("shop",{products});
  })
 
 
