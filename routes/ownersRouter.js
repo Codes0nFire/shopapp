@@ -36,7 +36,12 @@
 
 
 router.get("/admin",function(req,res){
-    res.render("createproduct");
+   
+
+   let success= req.flash("success");
+
+
+    res.render("createproduct",{success});
 })
 
 
