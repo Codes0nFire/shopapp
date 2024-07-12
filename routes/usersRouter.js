@@ -13,9 +13,9 @@ const {registerUser,loginUser,logoutUser}=require("../controllers/authController
 
 
 
-router.post("/create",registerUser);
+router.post("/register",registerUser);
 router.post("/login",loginUser);
-router.get("/logout",loginUser);
+router.get("/logout",logoutUser);
 
 
 

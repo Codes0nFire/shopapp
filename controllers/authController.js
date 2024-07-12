@@ -11,7 +11,11 @@ module.exports.registerUser= async  function(req,res){
 
     let user= await userModel.findOne({email});
 
-    if(user)return res.status(500).send(`user already exists`);
+    if(user){
+        req.flash("error","user already exists")
+
+        return res.redirect("/");
+    }
 
 
    try{
@@ -32,7 +36,7 @@ module.exports.registerUser= async  function(req,res){
 
            res.cookie("token",token);
         
-            res.send(newuser);
+           res.redirect("/shop");
         })
     })
 
@@ -57,7 +61,11 @@ module.exports.loginUser= async function (req,res){
 
 let user = await userModel.findOne({email});
 
-if(!user)return res.status(500).send("email or password is wrong");
+if(!user) {
+    req.flash("error","email or password is wrong")
+
+        return res.redirect("/");
+}
 
 bcrypt.compare(password,user.password,function(err,result){
     if(result){
@@ -66,10 +74,14 @@ bcrypt.compare(password,user.password,function(err,result){
 
        res.cookie("token",token);
         
-        res.send(" u can login").status(200)
+        res.redirect("/shop")
 
     }
-    else res.status(500).send("email or password is wrong");
+    else {
+        req.flash("error","email or password is wrong")
+
+        return res.redirect("/");
+    }
 })
 
 
@@ -82,7 +94,11 @@ bcrypt.compare(password,user.password,function(err,result){
 module.exports.logoutUser= async function (req,res){
 
     res.cookie("token","")
-    res.redirect("/");
+
+    req.flash("error","succesfully logout");
+
+    return res.redirect("/");
+   
 
 
 

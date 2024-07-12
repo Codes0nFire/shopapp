@@ -35,8 +35,8 @@
 
 
 
-router.get("/",function(req,res){
-    res.send("working fine lets go");
+router.get("/admin",function(req,res){
+    res.render("createproduct");
 })
 
 

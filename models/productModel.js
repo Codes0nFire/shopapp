@@ -12,7 +12,7 @@ const productSchema =mongoose.Schema({
         type:Number,
         defulat:0
     },
-    image:String,
+    image:Buffer,
     bgcolor:String,
     panelcolor:String,
     textcolor:String
